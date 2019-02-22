@@ -4,7 +4,7 @@
    "Version": "1.2.1",
    "Description": "Displays the daily luck message when you wake up so you don't have to check the TV every day.",
    "UniqueID": "remybach.forecaster",
-   "EntryDll": "forecaster.dll",
+   "EntryDll": "Forecaster.dll",
    "MinimumApiVersion": "2.0",
    "UpdateKeys": [ "Nexus:3037" ]
 }
