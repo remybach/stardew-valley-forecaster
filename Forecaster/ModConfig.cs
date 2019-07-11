@@ -1,6 +1,6 @@
 ﻿using StardewModdingAPI;
 
-class ModConfig {
+internal class ModConfig {
     public bool ShowLuckForecastOnWakeUp { get; set; } = true;
     public bool ShowWeatherOnWakeUp { get; set; } = true;
     public int InitialDelay { get; set; } = 1;

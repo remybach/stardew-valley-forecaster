@@ -21,18 +21,18 @@ namespace Forecaster
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
         public override void Entry(IModHelper helper) {
             _config = Helper.ReadConfig<ModConfig>();
-            helper.Events.GameLoop.DayStarted += TimeEvents_AfterDayStarted;
+            helper.Events.GameLoop.DayStarted += OnDayStarted;
             if (_config.EnableShortcutKeys)
-                helper.Events.Input.ButtonPressed += InputEvents_ButtonPressed;
+                helper.Events.Input.ButtonPressed += OnButtonPressed;
         }
 
         /*********
         ** Private methods
         *********/
-        /// <summary>The method invoked when the player presses a controller, keyboard, or mouse button.</summary>
+        /// <summary>Raised after the game begins a new day (including when the player loads a save).</summary>
         /// <param name="sender">The event sender.</param>
         /// <param name="e">The event data.</param>
-        private async void TimeEvents_AfterDayStarted(object sender, DayStartedEventArgs e) {
+        private async void OnDayStarted(object sender, DayStartedEventArgs e) {
             // ignore if player hasn't loaded a save yet
             if (!Context.IsWorldReady)
                 return;
@@ -52,13 +52,10 @@ namespace Forecaster
             }
         }
 
-        /*********
-        ** Private methods
-        *********/
-        /// <summary>The method invoked when the player presses a controller, keyboard, or mouse button.</summary>
+        /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
         /// <param name="sender">The event sender.</param>
         /// <param name="e">The event data.</param>
-        private void InputEvents_ButtonPressed(object sender, ButtonPressedEventArgs e) {
+        private void OnButtonPressed(object sender, ButtonPressedEventArgs e) {
             // ignore if player hasn't loaded a save yet
             if (!Context.IsWorldReady)
                 return;
