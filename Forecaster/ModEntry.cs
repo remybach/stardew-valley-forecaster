@@ -71,7 +71,7 @@ namespace Forecaster
             if (_luckForecast == null) {
                 _luckForecast = Helper.Reflection
                                 .GetMethod(_television, "getFortuneForecast")
-                                .Invoke<string>();
+                                .Invoke<string>(Game1.player);
             }
 
             Game1.addHUDMessage(new HUDMessage(_luckForecast, 2));
